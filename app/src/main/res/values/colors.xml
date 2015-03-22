@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="windowBackground">#F4F4F4</color>
+    <color name="theme_primary">#FFFFFF</color>
+    <color name="theme_primary_dark">#D6514D</color>
+    <color name="theme_primary_light">#D6514D</color>
+    <color name="theme_accent_1">#00b0ff</color>
+    <color name="theme_accent_1_light">#8ad4fa</color>
+    <color name="theme_accent_2">#e91e63</color>
+
+    <color name="divider">#CCCCCC</color>
+
+    <color name="primary_btn_normal">#D32F2F</color>
+    <color name="primary_btn_pressed">#80D32F2F</color>
+    <color name="secondary_btn_normal">@android:color/white</color>
+    <color name="secondary_btn_pressed">#80FFFFFF</color>
+    <color name="tertiary_btn_normal">#FF9900</color>
+    <color name="tertiary_btn_pressed">#80FF9900</color>
+    <color name="btn_disable">#CCCCCC</color>
+    <color name="gray_btn_normal">#CCCCCC</color>
+    <color name="gray_btn_pressed">#80CCCCCC</color>
+
+    <color name="editTextColor">#333333</color>
+    <color name="text_color_normal">#555555</color>
+    <color name="editTextColorHint">#CCCCCC</color>
+
+    <array name="primary_list">
+        <item>#83C7DE</item>
+        <item>#F17B8A</item>
+        <item>#60CFB5</item>
+        <item>#EBD26A</item>
+        <item>#E18DCC</item>
+        <item>#6FD99A</item>
+        <item>#F2A971</item>
+        <item>#5CD3E3</item>
+        <item>#5CD445</item>
+    </array>
+
+</resources>
