@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <attr name="siArrowPosition">
-        <enum name="left" value="0" />
-        <enum name="right" value="1" />
-        <enum name="left_in" value="2"/>
-    </attr>
-    <declare-styleable name="ShaderImageView">
-        <attr name="siSquare" format="boolean" />
-        <attr name="siBorderColor" format="color" />
-        <attr name="siBorderWidth" format="dimension" />
-        <attr name="siBorderAlpha" format="float" />
-        <attr name="siForeground" format="integer|reference" />
-        <!--BubbleImageView-->
-        <attr name="siArrowPosition"/>
-        <attr name="siTriangleHeight" format="dimension"/>
-        <!--ShaderImageView-->
-        <attr name="siStrokeMiter" format="dimension" />
+    
+    <declare-styleable name="ShapeTextView">
+        <attr name="background_color" format="color"/>
+        <attr name="triangle_height" format="dimension"/>
+        <attr name="text_size" format="dimension"/>
+        <attr name="text_color" format="color"/>
     </declare-styleable>
 
 </resources>

@@ -4,6 +4,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.test.tudou.startuptest.R;
@@ -14,38 +19,40 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements AdapterView.OnItemClickListener {
 
     @InjectView(R.id.activity_main_list)
-    ListView mList;
+    ListView mPrimaryList;
 
-    @InjectView(R.id.background_text)
-    ShapeTextView mBackgroundText;
-
-    private MainListAdapter mAdapter;
+    private MainListAdapter mMainListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
         ButterKnife.inject(this);
 
-        init();
+        setupPrimaryList();
+
     }
 
-    private void init() {
-        mAdapter = new MainListAdapter(MainActivity.this);
-        mList.setAdapter(mAdapter);
+    private void setupPrimaryList() {
+        mMainListAdapter = new MainListAdapter(MainActivity.this);
+        mPrimaryList.setAdapter(mMainListAdapter);
+        mPrimaryList.setOnItemClickListener(this);
+        mPrimaryList.setVerticalScrollBarEnabled(false);
+        mPrimaryList.setItemChecked(0, true);
+        mPrimaryList.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                View view = v;
+                return false;
+            }
+        });
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        mBackgroundText.reDraw();
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        mMainListAdapter.setCheckPosition(position);
     }
 }
