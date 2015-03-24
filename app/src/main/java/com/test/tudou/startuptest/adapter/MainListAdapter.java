@@ -1,12 +1,17 @@
 package com.test.tudou.startuptest.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.test.tudou.startuptest.R;
 import com.test.tudou.startuptest.StartupTestApp;
+import com.test.tudou.startuptest.ui.fragment.MainActivityFragment;
 import com.test.tudou.startuptest.ui.view.ShapeTextView;
 import com.test.tudou.startuptest.util.ViewHolder;
 
@@ -19,6 +24,7 @@ public class MainListAdapter extends BaseAdapter {
     private Context mContext;
     private int mCheckPosition;
     private int[] primaryListColors;
+    private Fragment mFragment;
 
     public MainListAdapter(Context context) {
         mContext = context;
@@ -62,6 +68,7 @@ public class MainListAdapter extends BaseAdapter {
             public void onClick(View v) {
                 mCheckPosition = position;
                 notifyDataSetInvalidated();
+                createFragment(position);
             }
         });
 
@@ -71,5 +78,19 @@ public class MainListAdapter extends BaseAdapter {
     public void setCheckPosition(int position) {
         mCheckPosition = position;
         notifyDataSetInvalidated();
+    }
+
+    private void createFragment(int position) {
+        mFragment = ((FragmentActivity)mContext).getSupportFragmentManager().findFragmentByTag("single_pane" + position);
+
+        if (mFragment == null) {
+            mFragment = MainActivityFragment.newInstance();
+            Bundle bundle = new Bundle();
+            bundle.putInt("key", position);
+            mFragment.setArguments(bundle);
+            ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container_main_content, mFragment, "single_pane" + position)
+                    .commit();
+        }
     }
 }

@@ -15,14 +15,6 @@
         android:id="@+id/container_main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_toRightOf="@id/activity_main_list">
-
-        <com.test.tudou.startuptest.ui.view.ShapeTextView
-            android:id="@+id/background_text"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"/>
-
-        </FrameLayout>
+        android:layout_toRightOf="@id/activity_main_list"/>
 
 </RelativeLayout>
