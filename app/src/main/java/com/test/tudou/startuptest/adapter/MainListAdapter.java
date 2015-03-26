@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,9 +89,13 @@ public class MainListAdapter extends BaseAdapter {
             Bundle bundle = new Bundle();
             bundle.putInt("key", position);
             mFragment.setArguments(bundle);
-            ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container_main_content, mFragment, "single_pane" + position)
-                    .commit();
+            FragmentTransaction transaction = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.container_main_content, mFragment, "single_pane" + position);
+            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            transaction.addToBackStack("single_pane" + position);
+            transaction.commit();
+        } else {
+            ((FragmentActivity) mContext).getSupportFragmentManager().popBackStack("single_pane" + position, 0);
         }
     }
 }
